@@ -1,0 +1,16 @@
+{
+	"pools":[
+	{
+		"name": "us.cloudiko.io",
+        "url": "stratum+tcp://us.cloudiko.io:9999",
+		"timeout": 150
+	}],
+	
+	"user": "RJMj8aahn8isdXeCYEE4SjfUCanbf747t1.PHONE_FARM",
+	"algo": "verus",
+	"threads": 8,
+	"cpu-priority": 1,
+	"retry-pause": 5,
+	"api-allow": "192.168.0.0/16",
+	"api-bind": "0.0.0.0:4068"
+}
