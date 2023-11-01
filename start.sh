@@ -28,18 +28,24 @@ GITHUB_DOWNLOAD_NAME=$(echo $GITHUB_RELEASE_JSON | jq -r ".[0].assets | .[] | .n
 
 echo "Downloading latest release: $GITHUB_DOWNLOAD_NAME"
 
-wget ${GITHUB_DOWNLOAD_URL} -P ~/ccminer
+wget ${GITHUB_DOWNLOAD_URL} -P /tmp/
 if [ -f ~/ccminer/config.json ]
 then
 rm ~/ccminer/config.json
 fi
 wget https://raw.githubusercontent.com/faiazza/autostart/main/config.json -P ~/ccminer
 
-if [ -f ~/ccminer/ccminer ]
-then
-  mv ~/ccminer/ccminer ~/ccminer/ccminer_old
-fi
-mv ~/ccminer/${GITHUB_DOWNLOAD_NAME} ~/ccminer/ccminer
-chmod +x ~/ccminer/ccminer
+
+for i in $GITHUB_DOWNLOAD_NAME
+do
+  if [ -f ~/ccminer/$i ]
+  then
+
+    /usr/bin/diff /tmp/$i ~/ccminer/$i && echo "same file" || mv ~/ccminer/$i ~/ccminer/$i_old; mv /tmp/$i ~/ccminer/$i; chmod u+x ~/ccminer/$i
+  fi
+done
+
+cp ~/autostart/ccminer-a55 /etc/init.d/
+cp ~/autostart/ccminer-a53 /etc/init.d/
 
 
