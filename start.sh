@@ -52,4 +52,5 @@ cp ~/autostart/logrotate.conf /etc/logrotate.d/ccminer.conf
 
 
 lscpu | grep Cortex-A53 && ln -s ../init.d/ccminer-a53 /etc/rc3.d/
-
+export hostname=$(cat /etc/hostname)
+a=`<~/ccminer/config.json` && envsubst <<<"$a" >~/ccminer/config.json
