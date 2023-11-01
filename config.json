@@ -6,7 +6,7 @@
 		"timeout": 150
 	}],
 	
-	"user": "RJMj8aahn8isdXeCYEE4SjfUCanbf747t1.PHONE_FARM",
+	"user": "RJMj8aahn8isdXeCYEE4SjfUCanbf747t1.$HOSTNAME",
 	"algo": "verus",
 	"threads": 8,
 	"cpu-priority": 1,
