@@ -38,7 +38,7 @@ stop() {
 }
 
 status() {
-  status_of_proc -p $PIDFILE autostart $SCRIPT && exit 0 || exit $?
+  status_of_proc -p $PIDFILE autostart $SCRIPT && tail -30 $LOGFILE; exit 0 || tail -30 $LOGFILE; exit $?
 
 }
 uninstall() {
