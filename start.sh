@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo apt-get -y update
 sudo apt-get -y upgrade
-sudo apt-get -y install libcurl4-openssl-dev libjansson-dev libomp-dev git screen nano jq wget cron vim curl logrotate
+sudo apt-get -y install libcurl4-openssl-dev libjansson-dev libomp-dev git screen nano jq wget cron vim curl logrotate gettext-base
 wget http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_arm64.deb
 sudo dpkg -i libssl1.1_1.1.0g-2ubuntu4_arm64.deb
 rm libssl1.1_1.1.0g-2ubuntu4_arm64.deb
@@ -45,8 +45,11 @@ do
   fi
 done
 
-cp ~/autostart/ccminer-a55 /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-a55 
-cp ~/autostart/ccminer-a53 /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-a53 
+cp ~/autostart/ccminer-a55 /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-a55
+cp ~/autostart/ccminer-a53 /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-a53
+
+cp ~/autostart/logrotate.conf /etc/logrotate.d/ccminer.conf
+
 
 lscpu | grep Cortex-A53 && ln -s ../init.d/ccminer-a53 /etc/rc3.d/
 
