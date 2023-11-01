@@ -10,7 +10,7 @@
 
 . /lib/lsb/init-functions
 
-SCRIPT=/home/userland/ccminer-v3.8.3-4_ARM -f /home/userland/ccminer/config.json
+SCRIPT=/home/userland/ccminer/ccminer-3.8.3-4_ARM -c /home/userland/ccminer/config.json
 RUNAS=userland
 
 PIDFILE=/var/run/ccminer-a53.pid
