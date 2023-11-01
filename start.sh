@@ -41,10 +41,14 @@ done
 
 cp ~/autostart/ccminer-a55 /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-a55
 cp ~/autostart/ccminer-a53 /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-a53
+cp ~/autostart/ccminer-init /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-init
 
 cp ~/autostart/logrotate.conf /etc/logrotate.d/ccminer.conf
 
 
-lscpu | grep Cortex-A53 && ln -s ../init.d/ccminer-a53 /etc/rc3.d/
+
 export HOSTNAME=$(cat /etc/hostname)
 envsubst <~/autostart/config.json > ~/ccminer/config.json
+
+#Start up the miner
+lscpu | grep Cortex-A53 && ln -s ../init.d/ccminer-a53 /etc/rc3.d/ && service ccminer-a53 start
