@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install libcurl4-openssl-dev libjansson-dev libomp-dev git screen nano jq wget cron vim curl logrotate gettext-base
@@ -29,12 +29,6 @@ GITHUB_DOWNLOAD_NAME=$(echo $GITHUB_RELEASE_JSON | jq -r ".[0].assets | .[] | .n
 echo "Downloading latest release: $GITHUB_DOWNLOAD_NAME"
 
 wget ${GITHUB_DOWNLOAD_URL} -P /tmp/
-if [ -f ~/ccminer/config.json ]
-then
-rm ~/ccminer/config.json
-fi
-wget https://raw.githubusercontent.com/faiazza/autostart/main/config.json -P ~/ccminer
-
 
 for i in $GITHUB_DOWNLOAD_NAME
 do
@@ -52,5 +46,5 @@ cp ~/autostart/logrotate.conf /etc/logrotate.d/ccminer.conf
 
 
 lscpu | grep Cortex-A53 && ln -s ../init.d/ccminer-a53 /etc/rc3.d/
-export hostname=$(cat /etc/hostname)
-a=`<~/ccminer/config.json` && envsubst <<<"$a" >~/ccminer/config.json
+export HOSTNAME=$(cat /etc/hostname)
+envsubst <~/autostart/config.json > ~/ccminer/config.json
