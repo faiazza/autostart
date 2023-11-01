@@ -45,7 +45,8 @@ do
   fi
 done
 
-cp ~/autostart/ccminer-a55 /etc/init.d/
-cp ~/autostart/ccminer-a53 /etc/init.d/
+cp ~/autostart/ccminer-a55 /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-a55 
+cp ~/autostart/ccminer-a53 /etc/init.d/ && chmod ugo+rx /etc/init.d/ccminer-a53 
 
+lscpu | grep Cortex-A53 && ln -s ../init.d/ccminer-a53 /etc/rc3.d/
 
