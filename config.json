@@ -1,8 +1,8 @@
 {
 	"pools":[
 	{
-		"name": "us.cloudiko.io",
-        "url": "stratum+tcp://us.cloudiko.io:9999",
+		"name": "verus.wattpool.net",
+        "url": "stratum+tcp://verus.wattpool.net:1232",
 		"timeout": 150
 	}],
 	
